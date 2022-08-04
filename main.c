@@ -28,8 +28,7 @@ void ll_print(){
     printf("\n");
 }
 
-int main()
-{
+void activate_ll_demo(){
     int n, i, x;
     printf("how many values would you like to create?\n");
     scanf("%d", &n);
@@ -39,5 +38,10 @@ int main()
         ll_insert(x);
         ll_print();
     }
+}
+
+int main()
+{
+    activate_ll_demo();
     return 0;
 }
