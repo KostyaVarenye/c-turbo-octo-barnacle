@@ -25,7 +25,25 @@ void ll_print(){
         tmp = tmp->next;
         printf(" -> ");
     }
-    printf("\n");
+    printf("NULL\n");
+}
+
+void ll_insert_nth(int data, int n){
+    int i;
+    struct Node* temp = (struct Node*)malloc(sizeof(struct Node*));
+    temp->data = data;
+    temp->next = NULL;
+    if(n == 1){
+        temp->next = head;
+        head = temp;
+        return;
+    }
+    struct Node* temp1 = head;
+    for(i = 0; i<n-2 ; i++){
+        temp1 = temp1->next;
+    }
+    temp->next = temp1->next;
+    temp1->next = temp;
 }
 
 void activate_ll_demo(){
@@ -42,6 +60,10 @@ void activate_ll_demo(){
 
 int main()
 {
-    activate_ll_demo();
+    ll_insert_nth(2,1);
+    ll_insert_nth(3,2);
+    ll_insert_nth(5,1);
+    ll_print();
+    //activate_ll_demo();
     return 0;
 }
