@@ -1,6 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void ll_insert(int);
+void ll_insert(int);
+void ll_print();
+void ll_insert_nth(int, int);
+void activate_ll_demo();
+void activate_ll_insert_nth_demo();
+void activate_ll_delete_nth(int);
+void activate_ll_delete_nth_node_demo();
+void ll_reverse();
+
 struct Node {
     int data;
     struct Node* next;
@@ -28,7 +38,6 @@ void ll_print(){
     }
     printf("NULL\n");
 }
-
 void ll_insert_nth(int data, int n){
     int i;
     struct Node* temp = (struct Node*)malloc(sizeof(struct Node*));
@@ -46,7 +55,6 @@ void ll_insert_nth(int data, int n){
     temp->next = temp1->next;
     temp1->next = temp;
 }
-
 void activate_ll_demo(){
     int n, i, x;
     printf("how many values would you like to create?\n");
@@ -89,7 +97,6 @@ void activate_ll_delete_nth(int n){
     temp1->next = temp1->next->next;
     free(temp2);
 }
-
 void activate_ll_delete_nth_node_demo(){
     activate_ll_insert_nth_demo(); //77 -> 5 -> 19 -> 2 -> 5 -> 3 -> NULL
     ll_print();
@@ -108,9 +115,27 @@ void activate_ll_delete_nth_node_demo(){
     activate_ll_delete_nth(1);//NULL
     ll_print();
 }
+void ll_reverse(){
+    if(!head){
+        return;
+    }
+    struct Node *curr, *prev, *next;
+    curr = head;
+    prev = NULL;
+
+    while(curr){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    head = prev;
+}
 int main()
 {
-    activate_ll_delete_nth_node_demo();
+    //activate_ll_delete_nth_node_demo();
     activate_ll_demo();
+    ll_reverse();
+    ll_print();
     return 0;
 }

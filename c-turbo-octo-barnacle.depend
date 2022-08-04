@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1659620429 source:f:\clionp\c-turbo-octo-barnacle\main.c
+	<stdio.h>
+	<stdlib.h>
+
