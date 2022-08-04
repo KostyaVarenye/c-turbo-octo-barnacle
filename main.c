@@ -5,6 +5,7 @@ struct Node {
     int data;
     struct Node* next;
 };
+
 struct Node* head = NULL;
 
 void ll_insert(int x){
@@ -57,13 +58,59 @@ void activate_ll_demo(){
         ll_print();
     }
 }
-
-int main()
-{
+void activate_ll_insert_nth_demo(){
     ll_insert_nth(2,1);
     ll_insert_nth(3,2);
     ll_insert_nth(5,1);
+    ll_insert_nth(5,3);
+    ll_insert_nth(19,2);
+    ll_insert_nth(77,1);
+
     ll_print();
-    //activate_ll_demo();
+}
+void activate_ll_delete_nth(int n){
+    if(!head){
+        // if head == NULL do nothing.
+        return;
+    }
+    struct Node* temp1 = head;
+    if(n == 1){
+        head = temp1->next;
+        free(temp1);
+        return;
+    }
+
+    int i;
+    for(i=0; i<n-2;i++){
+        // advance until you reach node n-1
+        temp1 = temp1->next;
+    }
+    struct Node* temp2 = temp1->next;
+    temp1->next = temp1->next->next;
+    free(temp2);
+}
+
+void activate_ll_delete_nth_node_demo(){
+    activate_ll_insert_nth_demo(); //77 -> 5 -> 19 -> 2 -> 5 -> 3 -> NULL
+    ll_print();
+    activate_ll_delete_nth(2);//77 -> 19 -> 2 -> 5 -> 3 -> NULL
+    ll_print();
+    activate_ll_delete_nth(4);//77 -> 19 -> 2 -> 3 -> NULL
+    ll_print();
+    activate_ll_delete_nth(2);//77 -> 2 -> 3 -> NULL
+    ll_print();
+    activate_ll_delete_nth(1);//2 -> 3 -> NULL
+    ll_print();
+    activate_ll_delete_nth(1);//3 -> NULL
+    ll_print();
+    activate_ll_delete_nth(1);//NULL
+    ll_print();
+    activate_ll_delete_nth(1);//NULL
+    ll_print();
+}
+int main()
+{
+    activate_ll_delete_nth_node_demo();
+    activate_ll_demo();
     return 0;
 }
